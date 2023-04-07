@@ -183,40 +183,40 @@ namespace Dapper.SimpleCRUDTests
 
     public class Tests
     {
-        public Tests(SimpleCRUD.Dialect dbtype)
+        public Tests(Dialect dbtype)
         {
             _dbtype = dbtype;
         }
-        private SimpleCRUD.Dialect _dbtype;
+        private Dialect _dbtype;
 
         private IDbConnection GetOpenConnection()
         {
 
             IDbConnection connection;
-            if (_dbtype == SimpleCRUD.Dialect.PostgreSQL)
+            if (_dbtype == Dialect.PostgreSQL)
             {
                 connection = new NpgsqlConnection(String.Format("Server={0};Port={1};User Id={2};Password={3};Database={4};", "localhost", "5432", "postgres", "postgrespass", "testdb"));
-                SimpleCRUD.SetDialect(SimpleCRUD.Dialect.PostgreSQL);
+                //SimpleCRUD.SetDialect(Dialect.PostgreSQL);
             }
-            else if (_dbtype == SimpleCRUD.Dialect.SQLite)
+            else if (_dbtype == Dialect.SQLite)
             {
                 connection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
-                SimpleCRUD.SetDialect(SimpleCRUD.Dialect.SQLite);
+                //SimpleCRUD.SetDialect(Dialect.SQLite);
             }
-            else if (_dbtype == SimpleCRUD.Dialect.MySQL)
+            else if (_dbtype == Dialect.MySQL)
             {
                 connection = new MySqlConnection(String.Format("Server={0};Port={1};User Id={2};Password={3};Database={4};", "localhost", "3306", "root", "admin", "testdb"));
-                SimpleCRUD.SetDialect(SimpleCRUD.Dialect.MySQL);
+                //SimpleCRUD.SetDialect(Dialect.MySQL);
             }
-            else if (_dbtype == SimpleCRUD.Dialect.DB2)
+            else if (_dbtype == Dialect.DB2)
             {
                 connection = new DB2Connection(string.Format("Server={0};UID={1};PWD={2};Database={3};", "localhost:50000", "db2admin", "db2admin", "testdb"));
-                SimpleCRUD.SetDialect(SimpleCRUD.Dialect.DB2);
+                //SimpleCRUD.SetDialect(Dialect.DB2);
             }
             else
             {
                 connection = new SqlConnection($@"Data Source={Program.SQLServerName};Initial Catalog=DapperSimpleCrudTestDb;Integrated Security=True;MultipleActiveResultSets=true;");
-                SimpleCRUD.SetDialect(SimpleCRUD.Dialect.SQLServer);
+                //SimpleCRUD.SetDialect(Dialect.SQLServer);
             }
 
             connection.Open();
@@ -683,13 +683,13 @@ namespace Dapper.SimpleCRUDTests
 
         //dialect test 
 
-        public void TestChangeDialect()
-        {
-            SimpleCRUD.SetDialect(SimpleCRUD.Dialect.SQLServer);
-            SimpleCRUD.GetDialect().IsEqualTo(SimpleCRUD.Dialect.SQLServer.ToString());
-            SimpleCRUD.SetDialect(SimpleCRUD.Dialect.PostgreSQL);
-            SimpleCRUD.GetDialect().IsEqualTo(SimpleCRUD.Dialect.PostgreSQL.ToString());
-        }
+        //public void TestChangeDialect()
+        //{
+        //    SimpleCRUD.SetDialect(Dialect.SQLServer);
+        //    SimpleCRUD.GetDialect().IsEqualTo(Dialect.SQLServer.ToString());
+        //    SimpleCRUD.SetDialect(Dialect.PostgreSQL);
+        //    SimpleCRUD.GetDialect().IsEqualTo(Dialect.PostgreSQL.ToString());
+        //}
 
 
         //        A GUID is being created and returned on insert but never actually

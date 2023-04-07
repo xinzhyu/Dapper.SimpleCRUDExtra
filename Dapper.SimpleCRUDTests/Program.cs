@@ -158,7 +158,7 @@ namespace Dapper.SimpleCRUDTests
         private static void RunTests()
         {
             var stopwatch = Stopwatch.StartNew();
-            var sqltester = new Tests(SimpleCRUD.Dialect.SQLServer);
+            var sqltester = new Tests(Dialect.SQLServer);
             foreach (var method in typeof(Tests).GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
             {
                 var testwatch = Stopwatch.StartNew();
@@ -190,7 +190,7 @@ namespace Dapper.SimpleCRUDTests
         private static void RunTestsPg()
         {
             var stopwatch = Stopwatch.StartNew();
-            var pgtester = new Tests(SimpleCRUD.Dialect.PostgreSQL);
+            var pgtester = new Tests(Dialect.PostgreSQL);
             foreach (var method in typeof(Tests).GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
             {
                 var testwatch = Stopwatch.StartNew();
@@ -208,7 +208,7 @@ namespace Dapper.SimpleCRUDTests
         private static void RunTestsSqLite()
         {
             var stopwatch = Stopwatch.StartNew();
-            var pgtester = new Tests(SimpleCRUD.Dialect.SQLite);
+            var pgtester = new Tests(Dialect.SQLite);
             foreach (var method in typeof(Tests).GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
             {
                 //skip schema tests
@@ -227,7 +227,7 @@ namespace Dapper.SimpleCRUDTests
         private static void RunTestsMySQL()
         {
             var stopwatch = Stopwatch.StartNew();
-            var mysqltester = new Tests(SimpleCRUD.Dialect.MySQL);
+            var mysqltester = new Tests(Dialect.MySQL);
             foreach (var method in typeof(Tests).GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
             {
                 //skip schema tests
@@ -300,7 +300,7 @@ namespace Dapper.SimpleCRUDTests
         private static void RunTestsDB2()
         {
             var stopwatch = Stopwatch.StartNew();
-            var db2tester = new Tests(SimpleCRUD.Dialect.DB2);
+            var db2tester = new Tests(Dialect.DB2);
             foreach (var method in typeof(Tests).GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
             {
                 //skip schema tests
